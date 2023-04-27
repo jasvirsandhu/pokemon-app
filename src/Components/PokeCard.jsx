@@ -1,3 +1,8 @@
+import styled from '@emotion/styled';
+import { ProgressBar } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
+
+
 function PokeCard (props) {
 
     const typeColour = (type) => {
@@ -45,24 +50,42 @@ function PokeCard (props) {
           default:
         }};
 
-
+        const Title = styled.h1`
+        margin-top: 5px;
+        color: black;
+        font-family: "Open Sans Condensed", "Open Sans", helvetica, sans-serif; 
+        font-size: 1.5em;    
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;                            
+        `
+        const PokeInfo = styled.div`
+        margin: 3px;
+        font-size: 	13px;
+        font-family: "Open Sans Condensed", "Open Sans", helvetica, sans-serif;
+        font-weight: 300;
+        text-align: left;
+        display: inline-flex;
+        justify-content: center;
+        max-width: 100%;
+        `
     return (
         <>
-        <div style={ {backgroundColor: `${typeColour(props.colour)}` } } className="card-container">
-        <h1>{props.pokeName}</h1>
-        <img className="poke-img" src={props.img} alt="Sprite of selected pokemon"></img>
-        <h3>Type: {props.type}</h3>
-        <h4>Height: {props.height}</h4>
-        <h4>Weight: {props.weight}</h4>
-        <h4>Abilities: {props.abilities}</h4>
-        <h3>Base Stats:</h3>
-        <h5>HP: {props.hp}</h5>
-        <h5>Attack: {props.atk}</h5>
-        <h5>Defense: {props.def}</h5>
-        <h5>Special Attack: {props.specAtk}</h5>
-        <h5>Special Defense: {props.specDef}</h5>
-        <h5>Speed: {props.speed}</h5>
-        </div>
+        <Card key={props.pokeName} style={ {backgroundColor: `${typeColour(props.colour)}` } } className="card-container">
+            <Card className="bg-overlay" style={ {backgroundColor: 'rgb(255, 255, 255, 0.5)'}}>
+                <div className="type-style"><PokeInfo>{props.type}</PokeInfo></div>
+                <Title className="poke-name">{props.pokeName}</Title>
+                <img className="poke-img" src={props.img} alt="Sprite of selected pokemon"></img>
+                <PokeInfo><p className='num-label'>Height:</p><p className='num-style'>{props.height}</p></PokeInfo>
+                <PokeInfo><p className='num-label'>Weight:</p><p className='num-style'>{props.weight}</p></PokeInfo>
+                <h2 className='abilities a-style'>{props.abilities}</h2>
+                <label className="stat-label">Attack: </label><ProgressBar className="progress-width" variant="info" animated now={props.atk} label={props.atk}></ProgressBar>
+                <label className="stat-label">Defense: </label><ProgressBar className="progress-width" variant="info" animated now={props.def} label={props.def}></ProgressBar>
+                <label className="stat-label">Special Attack: </label><ProgressBar className="progress-width" variant="info" animated now={props.specAtk} label={props.specAtk}></ProgressBar>
+                <label className="stat-label">Special Defense: </label><ProgressBar className="progress-width" variant="info" animated now={props.specDef} label={props.specDef}></ProgressBar>
+                <label className="stat-label">Speed: </label><ProgressBar className="progress-width" variant="info" animated now={props.speed} label={props.speed}></ProgressBar>
+            </Card>
+        </Card>
         </>
     )
 }
