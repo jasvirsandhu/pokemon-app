@@ -64,7 +64,6 @@ function PokeCard (props) {
         font-size: 	13px;
         font-family: "Open Sans Condensed", "Open Sans", helvetica, sans-serif;
         font-weight: 300;
-        text-align: left;
         display: inline-flex;
         justify-content: center;
         max-width: 100%;

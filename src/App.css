@@ -166,6 +166,7 @@ body {
   width: 20%;
   height: 0px;
   padding: 0.25em 0.5em 0;
+  text-align: right;
 }
 
 .num-style {
